@@ -288,9 +288,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 
 
 
-    ./mach build;
-    echo "Building symbol archive...";
-    ./mach buildsymbols
+
 %install
     export pkgdir="%{buildroot}"
     export srcdir="%{srcdir}"
@@ -298,6 +296,9 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
     export _pkgname="%{_pkgname}"
     export _pkgfolder="%{_pkgfolder}"
     cd firefox-109.0;
+     DESTDIR="%pkgdir"  ./mach build;
+    echo "Building symbol archive...";
+     DESTDIR="%pkgdir" ./mach buildsymbols
     DESTDIR="%pkgdir" ./mach install;
     rm "%pkgdir"/usr/lib/%{pkgname}/pingsender;
     install -Dvm644 "%srcdir/settings/%pkgname.psd" "%pkgdir/usr/share/psd/browsers/%pkgname";
