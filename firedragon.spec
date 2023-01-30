@@ -3,43 +3,154 @@ Version: 109.0
 Release: 1
 Summary: 'Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE'
 License: MPL
-Requires: gtk3
-Requires: libxt
-Requires: mime-types
-Requires: dbus-glib
-Requires: nss
-Requires: ttf-font
-Requires: libpulse
-Requires: ffmpeg
-Requires: xdg-desktop-portal
-BuildRequires: unzip
-BuildRequires: zip
-BuildRequires: diffutils
-BuildRequires: yasm
-BuildRequires: mesa
-BuildRequires: imake
-BuildRequires: inetutils
-BuildRequires: xorg-server-xvfb
-BuildRequires: autoconf2.13
-BuildRequires: rust
-BuildRequires: clang
-BuildRequires: llvm
-BuildRequires: jack
-BuildRequires: nodejs
-BuildRequires: cbindgen
-BuildRequires: nasm
-BuildRequires: mold
-BuildRequires: python-setuptools
-BuildRequires: python-zstandard
-BuildRequires: git
-BuildRequires: binutils
-BuildRequires: dump_syms
-BuildRequires: lld
-BuildRequires: wasi-compiler-rt>13
-BuildRequires: wasi-libc
-BuildRequires: wasi-libc++>13
-BuildRequires: wasi-libc++abi>13
-BuildRequires: pciutils
+
+%if %{?system_nss}
+BuildRequires:  pkgconfig(nspr) >= %{nspr_version}
+BuildRequires:  pkgconfig(nss) >= %{nss_version}
+BuildRequires:  nss-static >= %{nss_version}
+%endif
+BuildRequires:  pkgconfig(libpng)
+%if %{?system_jpeg}
+BuildRequires:  libjpeg-devel
+%endif
+BuildRequires:  zip
+BuildRequires: jack-audio-connection-kit-devel
+BuildRequires: alsa-lib-devel
+BuildRequires:  bzip2-devel
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(freetype2) >= %{freetype_version}
+BuildRequires:  pkgconfig(xt)
+BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(libstartup-notification-1.0)
+BuildRequires:  pkgconfig(libnotify) >= %{libnotify_version}
+BuildRequires:  pkgconfig(dri)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  dbus-glib-devel
+%if %{?system_libvpx}
+BuildRequires:  libvpx-devel >= %{libvpx_version}
+%endif
+BuildRequires:  autoconf213
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  yasm
+BuildRequires:  llvm
+BuildRequires:  llvm-devel
+BuildRequires:  clang
+BuildRequires:  clang-libs
+%if %{build_with_clang}
+BuildRequires:  lld
+%endif
+
+BuildRequires:  pipewire-devel
+
+%if !0%{?use_bundled_cbindgen}
+BuildRequires:  cbindgen
+%endif
+BuildRequires:  nodejs
+BuildRequires:  nasm >= 1.13
+BuildRequires:  libappstream-glib
+
+%if 0%{?big_endian}
+BuildRequires:  icu
+%endif
+
+Requires:       mozilla-filesystem
+Recommends:     mozilla-openh264 >= 2.1.1
+Recommends:     libva
+Requires:       p11-kit-trust
+Requires:       pciutils-libs
+%if %{?system_nss}
+Requires:       nspr >= %{nspr_build_version}
+Requires:       nss >= %{nss_build_version}
+%endif
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+%if !0%{?flatpak}
+Requires:       u2f-hidraw-policy
+%endif
+
+BuildRequires:  desktop-file-utils
+%if !0%{?flatpak}
+BuildRequires:  system-bookmarks
+%endif
+%if %{?system_ffi}
+BuildRequires:  pkgconfig(libffi)
+%endif
+
+%if 0%{?use_xvfb}
+BuildRequires:  xorg-x11-server-Xvfb
+%endif
+BuildRequires:  rust
+BuildRequires:  cargo
+BuildRequires:  clang-devel
+%if %{build_with_asan}
+BuildRequires:  libasan
+BuildRequires:  libasan-static
+%endif
+BuildRequires:  perl-interpreter
+BuildRequires:  fdk-aac-free-devel
+%if 0%{?test_on_wayland}
+BuildRequires:  mutter
+BuildRequires:  gsettings-desktop-schemas
+BuildRequires:  gnome-settings-daemon
+BuildRequires:  mesa-dri-drivers
+BuildRequires:  xorg-x11-server-Xwayland
+BuildRequires:  dbus-x11
+BuildRequires:  gnome-keyring
+%endif
+%if 0%{?run_firefox_tests}
+BuildRequires:  procps-ng
+BuildRequires:  nss-tools
+BuildRequires:  python2.7
+BuildRequires:  dejavu-sans-mono-fonts
+BuildRequires:  dejavu-sans-fonts
+BuildRequires:  dejavu-serif-fonts
+BuildRequires:  dbus-x11
+BuildRequires:  gnome-keyring
+BuildRequires:  mesa-dri-drivers
+# ----------------------------------------
+BuildRequires:  liberation-fonts-common
+BuildRequires:  liberation-mono-fonts
+BuildRequires:  liberation-sans-fonts
+BuildRequires:  liberation-serif-fonts
+# ----------------------------------
+# Missing on f32
+%if 0%{?fedora} > 33
+BuildRequires:  google-carlito-fonts
+%endif
+BuildRequires:  google-droid-sans-fonts
+BuildRequires:  google-noto-fonts-common
+BuildRequires:  google-noto-cjk-fonts-common
+BuildRequires:  google-noto-sans-cjk-ttc-fonts
+BuildRequires:  google-noto-sans-gurmukhi-fonts
+BuildRequires:  google-noto-sans-fonts
+BuildRequires:  google-noto-emoji-color-fonts
+BuildRequires:  google-noto-sans-sinhala-vf-fonts
+# -----------------------------------
+BuildRequires:  thai-scalable-fonts-common
+BuildRequires:  thai-scalable-waree-fonts
+BuildRequires:  khmeros-base-fonts
+BuildRequires:  jomolhari-fonts
+# ----------------------------------
+BuildRequires:  lohit-tamil-fonts
+BuildRequires:  lohit-telugu-fonts
+# ----------------------------------
+BuildRequires:  paktype-naskh-basic-fonts
+# faild to build in Koji / f32
+%if 0%{?fedora} > 33
+BuildRequires:  pt-sans-fonts
+%endif
+BuildRequires:  smc-meera-fonts
+BuildRequires:  stix-fonts
+BuildRequires:  abattis-cantarell-fonts
+BuildRequires:  xorg-x11-fonts-ISO8859-1-100dpi
+BuildRequires:  xorg-x11-fonts-misc
+%endif
+BuildRequires:  make
+BuildRequires:  pciutils-libs
 Source: https://gitlab.com/obsidian-development/lfs-for-firedragon/-/raw/main/firedragon-109.0.tar.gz
 %define __brp_mangle_shebangs %{nil}
 %define debug_package %{nil}
