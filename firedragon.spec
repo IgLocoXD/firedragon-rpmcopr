@@ -297,19 +297,19 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
     export pkgname="%{pkgname}"
     export _pkgname="%{_pkgname}"
     export _pkgfolder="%{_pkgfolder}"
-    cd firefox-"$pkgver";
-    DESTDIR="$pkgdir" ./mach install;
-    rm "$pkgdir"/usr/lib/${pkgname}/pingsender;
-    install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname";
+    cd firefox-109.0;
+    DESTDIR="%pkgdir" ./mach install;
+    rm "%pkgdir"/usr/lib/%{pkgname}/pingsender;
+    install -Dvm644 "%srcdir/settings/%pkgname.psd" "%pkgdir/usr/share/psd/browsers/%pkgname";
     local vendorjs;
-    vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js";
-    install -Dvm644 /dev/stdin "$vendorjs" <<END
+    vendorjs="%pkgdir/usr/lib/%pkgname/browser/defaults/preferences/vendor.js";
+    install -Dvm644 /dev/stdin "%vendorjs" <<END
 
 
-    cd ${srcdir}/firefox-"$pkgver";
-    cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/;
-    local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini";
-    install -Dvm644 /dev/stdin "$distini" <<END
+    cd %srcdir}/firefox-109.0;
+    cp -r%{srcdir}/settings/* %{pkgdir}/usr/lib/%{pkgname}/;
+    local distini="%pkgdir/usr/lib/%pkgname/distribution/distribution.ini";
+    install -Dvm644 /dev/stdin "%distini" <<END
 
 [Global]
 
