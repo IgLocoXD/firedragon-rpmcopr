@@ -300,7 +300,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 
     cd firefox-109.0;
 
-     DESTDIR="%pkgdir"  ./mach build;
+     DESTDIR="%pkgdir"  ./mach build --without-wasm-sandboxed-libraries ;
     echo "Building symbol archive...";
      DESTDIR="%pkgdir" ./mach buildsymbols
     DESTDIR="%pkgdir" ./mach install;
