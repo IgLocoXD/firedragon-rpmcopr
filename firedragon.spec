@@ -300,34 +300,35 @@ export pkgdir="%{buildroot}"
      DESTDIR="%pkgdir"  ./mach build  ;
     echo "Building symbol archive...";
      DESTDIR="%pkgdir" ./mach buildsymbols
-    DESTDIR="%pkgdir" ./mach install;
+
 
 %install
-    export pkgdir="%{buildroot}"
-    export srcdir="%{srcdir}"
-    export pkgname="%{pkgname}"
-    export _pkgname="%{_pkgname}"
-    export _pkgfolder="%{_pkgfolder}"
-    env CARGO_HOME=.cargo cargo install cbindgen
-    export PATH=`pwd`/.cargo/bin:$PATH
+    cd firefox-109.0
+  DESTDIR="%pkgdir" ./mach install
 
-    cd firefox-109.0;
+  rm "%pkgdir"/usr/lib/%{pkgname}/pingsender
 
-     DESTDIR="%pkgdir"  ./mach build  ;
-    echo "Building symbol archive...";
-     DESTDIR="%pkgdir" ./mach buildsymbols
-    DESTDIR="%pkgdir" ./mach install;
-    rm "%pkgdir"/usr/lib/%{pkgname}/pingsender;
-    install -Dvm644 "%srcdir/settings/%pkgname.psd" "%pkgdir/usr/share/psd/browsers/%pkgname";
-    local vendorjs;
-    vendorjs="%pkgdir/usr/lib/%pkgname/browser/defaults/preferences/vendor.js";
-    install -Dvm644 /dev/stdin "%vendorjs" <<END
+  install -Dvm644 "%srcdir/settings/%pkgname.psd" "%pkgdir/usr/share/psd/browsers/%pkgname"
 
+  local vendorjs
+  vendorjs="%pkgdir/usr/lib/%pkgname/browser/defaults/preferences/vendor.js"
 
-    cd %{srcdir}/firefox-109.0;
-    cp -r "%{srcdir}"/settings/ *  "%{pkgdir}"/usr/lib/"%{pkgname}"/;
-    local distini="%pkgdir/usr/lib/%pkgname/distribution/distribution.ini";
-    install -Dvm644 /dev/stdin "%distini" <<END
+  install -Dvm644 /dev/stdin "%vendorjs" <<END
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+
+// Don't disable extensions in the application directory
+// done in firedragon.cfg
+// pref("extensions.autoDisableScopes", 11);
+END
+
+  # cd ${srcdir}/settings
+  # git checkout ${_settings_commit}
+  cd %{srcdir}/firefox-109.0
+  cp -r "%{srcdir}"/settings/ * "%{pkgdir}"/usr/lib/"%{pkgname}"/
+
+  local distini="%pkgdir/usr/lib/%pkgname/distribution/distribution.ini"
+  install -Dvm644 /dev/stdin "%distini" <<END
 
 [Global]
 
