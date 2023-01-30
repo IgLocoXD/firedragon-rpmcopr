@@ -263,17 +263,8 @@ rm -f "${srcdir}"/common/source_files/mozconfig
     export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach;
     ulimit -n 4096;
     echo "Building instrumented browser...";
-    if [[ $CARCH == 'aarch64' ]]; then
         cat ../mozconfig - > .mozconfig <<END
 ac_add_options --enable-profile-generate
-END
-
-    else
-        cat ../mozconfig - > .mozconfig <<END
-ac_add_options --enable-profile-generate
-END
-
-    fi
     ./mach build;
     echo "Profiling instrumented browser...";
     ./mach package;
@@ -285,23 +276,18 @@ END
     echo "Removing instrumented browser...";
     ./mach clobber;
     echo "Building optimized browser...";
-    if [[ $CARCH == 'aarch64' ]]; then
-        cat ../mozconfig - > .mozconfig <<END
+
 ac_add_options --enable-lto
 ac_add_options --enable-profile-use
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-
-    else
-        cat ../mozconfig - > .mozconfig <<END
 ac_add_options --enable-lto
 ac_add_options --enable-profile-use
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
 
-    fi
+
+
     ./mach build;
     echo "Building symbol archive...";
     ./mach buildsymbols
@@ -318,12 +304,7 @@ END
     local vendorjs;
     vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js";
     install -Dvm644 /dev/stdin "$vendorjs" <<END
-// Use system-provided dictionaries
-pref("spellchecker.dictionary_path", "/usr/share/hunspell");
-// Don't disable extensions in the application directory
-// done in firedragon.cfg
-// pref("extensions.autoDisableScopes", 11);
-END
+
 
     cd ${srcdir}/firefox-"$pkgver";
     cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/;
@@ -336,33 +317,7 @@ END
 app.distributor=garudalinux
 app.distributor.channel=%pkgname
 app.partner.garudalinux=garudalinux
-END
 
-    for i in 16 32 48 64 128;
-    do
-        install -Dvm644 browser/branding/%{pkgname}/default%i.png "%pkgdir/usr/share/icons/hicolor/%{i}x%{i}/apps/%pkgname.png";
-    done;
-    install -Dvm644 browser/branding/%{pkgname}/content/about-logo.png "%pkgdir/usr/share/icons/hicolor/192x192/apps/%pkgname.png";
-    install -Dvm644 browser/branding/%{pkgname}/default16.png "%pkgdir/usr/share/icons/hicolor/symbolic/apps/%pkgname-symbolic.png";
-    install -Dvm644 ../%pkgname.desktop "%pkgdir/usr/share/applications/%pkgname.desktop";
-    install -Dvm755 /dev/stdin "%pkgdir/usr/bin/%pkgname" <<END
-#!/bin/sh
-exec /usr/lib/%pkgname/%pkgname "\%@"
-END
-
-    ln -srfv "%pkgdir/usr/bin/%pkgname" "%pkgdir/usr/lib/%pkgname/%pkgname-bin";
-    local nssckbi="%pkgdir/usr/lib/%pkgname/libnssckbi.so";
-    if [[ -e %nssckbi ]]; then
-        ln -srfv "%pkgdir/usr/lib/libnssckbi.so" "%nssckbi";
-    fi;
-    ln -s "/usr/lib/mozilla/native-messaging-hosts" "%pkgdir/usr/lib/firedragon/native-messaging-hosts";
-    rm "%pkgdir/usr/lib/firedragon/LICENSE.txt";
-    rm "%pkgdir/usr/lib/firedragon/about.png";
-    rm "%pkgdir/usr/lib/firedragon/firedragon.psd";
-    rm "%pkgdir/usr/lib/firedragon/home.png";
-    rm "%pkgdir/usr/lib/firedragon/package.json";
-    rm "%pkgdir/usr/lib/firedragon/tabliss.json";
-    rm "%pkgdir/usr/lib/firedragon/yarn.lock"
 
 %files
 /*
