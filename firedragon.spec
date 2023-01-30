@@ -161,8 +161,8 @@ echo "ac_add_options --disable-elf-hack" >> .mozconfig
 echo "ac_add_options --enable-profile-generate" >> .mozconfig
 echo "ac_add_options --enable-lto" >> .mozconfig
 echo "ac_add_options --enable-profile-use" >> .mozconfig
-echo "ac_add_options --with-pgo-profile-path=%{PWD@Q}/merged.profdata" >> .mozconfig
-echo "ac_add_options --with-pgo-jarlog=%{PWD@Q}/jarlog" >> .mozconfig
+#echo "ac_add_options --with-pgo-profile-path=%{PWD@Q}/merged.profdata" >> .mozconfig
+#echo "ac_add_options --with-pgo-jarlog=%{PWD@Q}/jarlog" >> .mozconfig
 echo "ac_add_options --enable-lto" >> .mozconfig
 echo "ac_add_options --enable-profile-use" >> .mozconfig
 echo "ac_add_options --with-pgo-profile-path=%{PWD@Q}/merged.profdata" >> .mozconfig
