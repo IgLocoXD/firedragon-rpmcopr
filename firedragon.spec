@@ -160,11 +160,11 @@ echo "ac_add_options --enable-optimize" >> .mozconfig
 # Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
 echo "ac_add_options --disable-elf-hack" >> .mozconfig
 echo "ac_add_options --enable-profile-generate" >> .mozconfig
-echo "ac_add_options --enable-lto" >> .mozconfig
+#echo "ac_add_options --enable-lto" >> .mozconfig
 #echo "ac_add_options --enable-profile-use" >> .mozconfig
 #echo "ac_add_options --with-pgo-profile-path=%{PWD@Q}/merged.profdata" >> .mozconfig
 #echo "ac_add_options --with-pgo-jarlog=%{PWD@Q}/jarlog" >> .mozconfig
-echo "ac_add_options --enable-lto" >> .mozconfig
+#echo "ac_add_options --enable-lto" >> .mozconfig
 #echo "ac_add_options --enable-profile-use" >> .mozconfig
 
 echo "ac_add_options --without-wasm-sandboxed-libraries" >> .mozconfig
