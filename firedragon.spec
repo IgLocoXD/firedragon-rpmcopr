@@ -125,7 +125,7 @@ echo "mk_add_options MOZ_TELEMETRY_REPORTING=0" >> .mozconfig
 echo "ac_add_options --disable-bootstrap" >> .mozconfig
 echo "ac_add_options --enable-default-toolkit=cairo-gtk3-wayland" >> .mozconfig
 echo "ac_add_options --enable-hardening" >> .mozconfig
-echo "ac_add_options --enable-linker=mold" >> .mozconfig
+#echo "ac_add_options --enable-linker=mold" >> .mozconfig
 echo "ac_add_options --enable-release" >> .mozconfig
 echo "ac_add_options --enable-rust-simd" >> .mozconfig
 echo "ac_add_options --prefix=/usr" >> .mozconfig
