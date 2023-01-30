@@ -99,28 +99,28 @@ Source: https://gitlab.com/obsidian-development/lfs-for-firedragon/-/raw/main/fi
 
 
 
-  cat >../mozconfig <<END
-ac_add_options --enable-application=browser
-mk_add_options MOZ_OBJDIR=%{PWD@Q}/obj
+
+echo "ac_add_options --enable-application=browser" >> .mozconfig
+echo "mk_add_options MOZ_OBJDIR=%{PWD@Q}/obj" >> .mozconfig
 
 # This supposedly speeds up compilation (We test through dogfooding anyway)
-ac_add_options --disable-debug
-ac_add_options --disable-tests
+echo "ac_add_options --disable-debug" >> .mozconfig
+echo "ac_add_options --disable-tests" >> .mozconfig
 
 # TODO: use source/assets/moczonfig in the future
 # NOTE: let us use it for one last build, otherwise, there might be some conflicts
-mk_add_options MOZ_CRASHREPORTER=0
-mk_add_options MOZ_DATA_REPORTING=0
-mk_add_options MOZ_SERVICES_HEALTHREPORT=0
-mk_add_options MOZ_TELEMETRY_REPORTING=0
+echo "mk_add_options MOZ_CRASHREPORTER=0" >> .mozconfig
+echo "mk_add_options MOZ_DATA_REPORTING=0" >> .mozconfig
+echo "mk_add_options MOZ_SERVICES_HEALTHREPORT=0" >> .mozconfig
+echo "mk_add_options MOZ_TELEMETRY_REPORTING=0" >> .mozconfig
 
-ac_add_options --disable-bootstrap
-ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-ac_add_options --enable-hardening
-ac_add_options --enable-linker=mold
-ac_add_options --enable-release
-ac_add_options --enable-rust-simd
-ac_add_options --prefix=/usr
+echo "ac_add_options --disable-bootstrap" >> .mozconfig
+echo "ac_add_options --enable-default-toolkit=cairo-gtk3-wayland" >> .mozconfig
+echo "ac_add_options --enable-hardening" >> .mozconfig
+echo "ac_add_options --enable-linker=mold" >> .mozconfig
+echo "ac_add_options --enable-release" >> .mozconfig
+echo "ac_add_options --enable-rust-simd" >> .mozconfig
+echo "ac_add_options --prefix=/usr" >> .mozconfig
 
 export AR=llvm-ar
 export CC='clang'
@@ -129,28 +129,28 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
 # Branding
-ac_add_options --allow-addon-sideload
-ac_add_options --enable-update-channel=release
-ac_add_options --with-app-name=%{pkgname}
-ac_add_options --with-branding=browser/branding/%{pkgname}
-ac_add_options --with-distribution-id=org.garudalinux
-ac_add_options --with-unsigned-addon-scopes=app,system
+echo "ac_add_options --allow-addon-sideload" >> .mozconfig
+echo " ac_add_options --enable-update-channel=release"  >> .mozconfig
+echo " ac_add_options --with-app-name=%{pkgname}" >> .mozconfig
+echo " ac_add_options --with-branding=browser/branding/%{pkgname }" >> .mozconfig
+echo "ac_add_options --with-distribution-id=org.garudalinux"  >> .mozconfig
+echo "ac_add_options --with-unsigned-addon-scopes=app,system"  >> .mozconfig
 export MOZ_REQUIRE_SIGNING=1
 
 # System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
+echo " ac_add_options --with-system-nspr" >> .mozconfig
+echo "ac_add_options --with-system-nss">> .mozconfig
 
 # Features
-ac_add_options --enable-alsa
-ac_add_options --enable-jack
-ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
+echo "ac_add_options --enable-alsa">> .mozconfig
+echo "ac_add_options --enable-jack">> .mozconfig
+echo " ac_add_options --disable-crashreporter">> .mozconfig
+echo "ac_add_options --disable-updater">> .mozconfig
 # probably not needed, enabled by default?
-ac_add_options --enable-optimize
+echo "ac_add_options --enable-optimize">> .mozconfig
 
 # Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
-ac_add_options --disable-elf-hack
+echo " ac_add_options --disable-elf-hack">> .mozconfig
 
 # might help with failing x86_64 builds?
 export LDFLAGS+=" -Wl,--no-keep-memory"
@@ -277,15 +277,15 @@ ac_add_options --enable-profile-generate
     ./mach clobber;
     echo "Building optimized browser...";
 
-ac_add_options --enable-lto
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-ac_add_options --enable-lto
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-ac_add_options --without-wasm-sandboxed-libraries
+echo "ac_add_options --enable-lto" >> .mozconfig
+echo "ac_add_options --enable-profile-use">> .mozconfig
+echo "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata">> .mozconfig
+echo "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog">> .mozconfig
+echo "ac_add_options --enable-lto">> .mozconfig
+echo "ac_add_options --enable-profile-use">> .mozconfig
+echo "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata">> .mozconfig
+echo "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog">> .mozconfig
+echo "ac_add_options --without-wasm-sandboxed-libraries">> .mozconfig
 
 
 
