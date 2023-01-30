@@ -3,8 +3,6 @@ Version: 109.0
 Release: 1
 Summary: 'Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE'
 License: MPL
-License: GPL
-License: LGPL
 Requires: gtk3
 Requires: libxt
 Requires: mime-types
