@@ -331,12 +331,7 @@ END
   local distini="%pkgdir/usr/lib/%pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "%distini" <<END
 
-[Global]
 
-[Preferences]
-app.distributor=garudalinux
-app.distributor.channel=%pkgname
-app.partner.garudalinux=garudalinux
 
 
 %files
