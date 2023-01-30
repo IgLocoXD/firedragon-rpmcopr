@@ -298,8 +298,8 @@ export pkgdir="%{buildroot}"
     export pkgname="%{pkgname}"
     export _pkgname="%{_pkgname}"
     export _pkgfolder="%{_pkgfolder}"
-    env CARGO_HOME=.cargo cargo install cbindgen
-    export PATH=`pwd`/.cargo/bin:$PATH
+    cargo install cbindgen
+    
 
      cd %{srcdir}/firefox-109.0;
 
