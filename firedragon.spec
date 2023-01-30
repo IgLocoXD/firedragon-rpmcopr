@@ -264,7 +264,7 @@ rm -f "%{srcdir}"/common/source_files/mozconfig
     ulimit -n 4096;
     echo "Building instrumented browser...";
         cat .mozconfig
-ac_add_options --enable-profile-generate
+echo "ac_add_options --enable-profile-generate" >> .mozconfig
     ./mach build;
     echo "Profiling instrumented browser...";
     ./mach package;
