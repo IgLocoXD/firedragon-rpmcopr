@@ -285,7 +285,7 @@ ac_add_options --enable-lto
 ac_add_options --enable-profile-use
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-
+ac_add_options --without-wasm-sandboxed-libraries
 
 
 
@@ -300,7 +300,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 
     cd firefox-109.0;
 
-     DESTDIR="%pkgdir"  ./mach build --without-wasm-sandboxed-libraries ;
+     DESTDIR="%pkgdir"  ./mach build  ;
     echo "Building symbol archive...";
      DESTDIR="%pkgdir" ./mach buildsymbols
     DESTDIR="%pkgdir" ./mach install;
