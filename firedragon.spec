@@ -21,7 +21,7 @@ BuildRequires:  pkgconfig(libnotify) >= %{libnotify_version}
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  dbus-glib-devel
-BuildRequires:  autoconf213
+
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  yasm
 BuildRequires:  llvm
