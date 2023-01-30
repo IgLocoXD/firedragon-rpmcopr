@@ -138,19 +138,19 @@ echo "ac_add_options --with-unsigned-addon-scopes=app,system"  >> .mozconfig
 export MOZ_REQUIRE_SIGNING=1
 
 # System libraries
-echo " ac_add_options --with-system-nspr" >> .mozconfig
+echo "ac_add_options --with-system-nspr" >> .mozconfig
 echo "ac_add_options --with-system-nss">> .mozconfig
 
 # Features
 echo "ac_add_options --enable-alsa">> .mozconfig
 echo "ac_add_options --enable-jack">> .mozconfig
-echo " ac_add_options --disable-crashreporter">> .mozconfig
+echo "ac_add_options --disable-crashreporter">> .mozconfig
 echo "ac_add_options --disable-updater">> .mozconfig
 # probably not needed, enabled by default?
 echo "ac_add_options --enable-optimize">> .mozconfig
 
 # Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
-echo " ac_add_options --disable-elf-hack">> .mozconfig
+echo "ac_add_options --disable-elf-hack">> .mozconfig
 
 # might help with failing x86_64 builds?
 export LDFLAGS+=" -Wl,--no-keep-memory"
@@ -279,12 +279,12 @@ echo "ac_add_options --enable-profile-generate" >> .mozconfig
 
 echo "ac_add_options --enable-lto" >> .mozconfig
 echo "ac_add_options --enable-profile-use">> .mozconfig
-echo "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata">> .mozconfig
-echo "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog">> .mozconfig
+echo "ac_add_options --with-pgo-profile-path=%{PWD@Q}/merged.profdata">> .mozconfig
+echo "ac_add_options --with-pgo-jarlog=%{PWD@Q}/jarlog">> .mozconfig
 echo "ac_add_options --enable-lto">> .mozconfig
 echo "ac_add_options --enable-profile-use">> .mozconfig
-echo "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata">> .mozconfig
-echo "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog">> .mozconfig
+echo "ac_add_options --with-pgo-profile-path=%{PWD@Q}/merged.profdata">> .mozconfig
+echo "ac_add_options --with-pgo-jarlog=%{PWD@Q}/jarlog">> .mozconfig
 echo "ac_add_options --without-wasm-sandboxed-libraries">> .mozconfig
 cat .mozconfig
 export pkgdir="%{buildroot}"
