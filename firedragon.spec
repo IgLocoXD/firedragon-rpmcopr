@@ -263,7 +263,7 @@ rm -f "%{srcdir}"/common/source_files/mozconfig
     export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach;
     ulimit -n 4096;
     echo "Building instrumented browser...";
-        cat ./mozconfig
+        cat .mozconfig
 ac_add_options --enable-profile-generate
     ./mach build;
     echo "Profiling instrumented browser...";
@@ -286,7 +286,7 @@ echo "ac_add_options --enable-profile-use">> .mozconfig
 echo "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata">> .mozconfig
 echo "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog">> .mozconfig
 echo "ac_add_options --without-wasm-sandboxed-libraries">> .mozconfig
-cat ../mozconfig - > .mozconfig <<END
+cat .mozconfig
 export pkgdir="%{buildroot}"
     export srcdir="%{srcdir}"
     export pkgname="%{pkgname}"
