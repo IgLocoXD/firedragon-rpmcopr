@@ -286,8 +286,21 @@ echo "ac_add_options --enable-profile-use">> .mozconfig
 echo "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata">> .mozconfig
 echo "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog">> .mozconfig
 echo "ac_add_options --without-wasm-sandboxed-libraries">> .mozconfig
+cat ../mozconfig - > .mozconfig <<END
+export pkgdir="%{buildroot}"
+    export srcdir="%{srcdir}"
+    export pkgname="%{pkgname}"
+    export _pkgname="%{_pkgname}"
+    export _pkgfolder="%{_pkgfolder}"
+    env CARGO_HOME=.cargo cargo install cbindgen
+    export PATH=`pwd`/.cargo/bin:$PATH
 
+    cd firefox-109.0;
 
+     DESTDIR="%pkgdir"  ./mach build  ;
+    echo "Building symbol archive...";
+     DESTDIR="%pkgdir" ./mach buildsymbols
+    DESTDIR="%pkgdir" ./mach install;
 
 %install
     export pkgdir="%{buildroot}"
