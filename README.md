@@ -1,4 +1,3 @@
-# firefox-nightly-rpmspec
-RPM spec file for Firefox Nightly
+# firedragon-rpmspec
+RPM spec file for Firedragon
 
-used in https://copr.fedorainfracloud.org/coprs/totalchaos/firefox-nightly
