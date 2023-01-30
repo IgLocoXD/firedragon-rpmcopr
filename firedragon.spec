@@ -306,7 +306,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
     install -Dvm644 /dev/stdin "%vendorjs" <<END
 
 
-    cd %srcdir}/firefox-109.0;
+    cd %{srcdir}/firefox-109.0;
     cp -r%{srcdir}/settings/* %{pkgdir}/usr/lib/%{pkgname}/;
     local distini="%pkgdir/usr/lib/%pkgname/distribution/distribution.ini";
     install -Dvm644 /dev/stdin "%distini" <<END
