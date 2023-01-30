@@ -96,7 +96,7 @@ Source: https://gitlab.com/obsidian-development/lfs-for-firedragon/-/raw/main/fi
     export pkgname="%{pkgname}"
     export _pkgname="%{_pkgname}"
     export _pkgfolder="%{_pkgfolder}"
-    cd firefox-"$pkgver";
+    cd firefox-109.0;
     export MOZ_NOSPAM=1;
     export MOZBUILD_STATE_PATH="$srcdir/mozbuild";
     export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip;
