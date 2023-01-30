@@ -40,7 +40,7 @@ BuildRequires: wasi-libc
 BuildRequires: wasi-libc++>13
 BuildRequires: wasi-libc++abi>13
 BuildRequires: pciutils
-Source: firedragon-109.0.tar.gz
+Source: https://gitlab.com/obsidian-development/lfs-for-firedragon/-/raw/main/firedragon-109.0.tar.gz
 %define __brp_mangle_shebangs %{nil}
 %define debug_package %{nil}
 %define srcdir %{_builddir}/firedragon-109.0
