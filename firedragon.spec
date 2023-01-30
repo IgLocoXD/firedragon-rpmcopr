@@ -299,7 +299,7 @@ export pkgdir="%{buildroot}"
     export pkgname="%{pkgname}"
     export _pkgname="%{_pkgname}"
     export _pkgfolder="%{_pkgfolder}"
-    cargo install cbindgen
+    
     
 
      cd %{srcdir}/firefox-109.0;
