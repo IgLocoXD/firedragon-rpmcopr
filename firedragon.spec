@@ -95,7 +95,7 @@ Source: https://gitlab.com/obsidian-development/lfs-for-firedragon/-/raw/main/fi
 
 %build
     mkdir -p mozbuild
-  cd firefox-109.0
+    cd %{srcdir}/firefox-109.0
 
 
 
@@ -256,7 +256,7 @@ rm -f "%{srcdir}"/common/source_files/mozconfig
     export pkgname="%{pkgname}"
     export _pkgname="%{_pkgname}"
     export _pkgfolder="%{_pkgfolder}"
-    cd firefox-109.0;
+     cd %{srcdir}/firefox-109.0;
     export MOZ_NOSPAM=1;
     export MOZBUILD_STATE_PATH="$srcdir/mozbuild";
     export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip;
@@ -295,7 +295,7 @@ export pkgdir="%{buildroot}"
     env CARGO_HOME=.cargo cargo install cbindgen
     export PATH=`pwd`/.cargo/bin:$PATH
 
-    cd firefox-109.0;
+     cd %{srcdir}/firefox-109.0;
 
      DESTDIR="%pkgdir"  ./mach build  ;
     echo "Building symbol archive...";
@@ -303,7 +303,7 @@ export pkgdir="%{buildroot}"
 
 
 %install
-    cd firefox-109.0
+     cd %{srcdir}/firefox-109.0
   DESTDIR="%pkgdir" ./mach install
 
   rm "%pkgdir"/usr/lib/%{pkgname}/pingsender
