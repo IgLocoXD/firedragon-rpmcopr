@@ -6,6 +6,7 @@ License: MPL
 
 BuildRequires:  zip
 BuildRequires:  cbindgen
+BuildRequires: m4
 BuildRequires: nspr
 BuildRequires: nss
 BuildRequires:  nspr-devel 
