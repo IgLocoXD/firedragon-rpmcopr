@@ -295,6 +295,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
     export pkgname="%{pkgname}"
     export _pkgname="%{_pkgname}"
     export _pkgfolder="%{_pkgfolder}"
+    export PATH=`pwd`/.cargo/bin:$PATH
     cd firefox-109.0;
     DESTDIR="%pkgdir"  ./mach bootstrap;
      DESTDIR="%pkgdir"  ./mach build;
