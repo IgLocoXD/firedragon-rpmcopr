@@ -5,6 +5,8 @@ Summary: 'Librewolf fork build using custom branding, settings & KDE patches by 
 License: MPL
 
 BuildRequires:  zip
+BuildRequires: nspr
+BuildRequires: nss
 BuildRequires:  nspr-devel 
 BuildRequires:  nss-devel 
 BuildRequires:  nss-static
