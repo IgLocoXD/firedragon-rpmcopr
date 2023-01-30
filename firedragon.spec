@@ -249,8 +249,8 @@ rebrand librewolf firedragon
 rebrand "fredragon\.net" "librewolf.net"
 rebrand "#why-is-firedragon-forcing-light-theme" "#why-is-librewolf-forcing-light-theme"
 rebrand kmozillahelper kfiredragonhelper
-rm -f "${srcdir}"/common/source_files/mozconfig
-  cp -r "${srcdir}"/common/source_files/* ./
+rm -f "%{srcdir}"/common/source_files/mozconfig
+  cp -r "%{srcdir}"/common/source_files/* ./
   export pkgdir="%{buildroot}"
     export srcdir="%{srcdir}"
     export pkgname="%{pkgname}"
@@ -325,7 +325,7 @@ export pkgdir="%{buildroot}"
 
 
     cd %{srcdir}/firefox-109.0;
-    cp -r%{srcdir}/settings/* %{pkgdir}/usr/lib/%{pkgname}/;
+    cp -r "%{srcdir}"/settings/ *  "%{pkgdir}"/usr/lib/"%{pkgname}"/;
     local distini="%pkgdir/usr/lib/%pkgname/distribution/distribution.ini";
     install -Dvm644 /dev/stdin "%distini" <<END
 
