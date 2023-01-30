@@ -263,7 +263,7 @@ rm -f "%{srcdir}"/common/source_files/mozconfig
     export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach;
     ulimit -n 4096;
     echo "Building instrumented browser...";
-        cat ../mozconfig - > .mozconfig <<END
+        cat ./mozconfig
 ac_add_options --enable-profile-generate
     ./mach build;
     echo "Profiling instrumented browser...";
