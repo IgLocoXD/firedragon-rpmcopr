@@ -165,8 +165,7 @@ echo "ac_add_options --enable-profile-use" >> .mozconfig
 #echo "ac_add_options --with-pgo-jarlog=%{PWD@Q}/jarlog" >> .mozconfig
 echo "ac_add_options --enable-lto" >> .mozconfig
 echo "ac_add_options --enable-profile-use" >> .mozconfig
-echo "ac_add_options --with-pgo-profile-path=%{PWD@Q}/merged.profdata" >> .mozconfig
-echo "ac_add_options --with-pgo-jarlog=%{PWD@Q}/jarlog" >> .mozconfig
+
 echo "ac_add_options --without-wasm-sandboxed-libraries" >> .mozconfig
 # might help with failing x86_64 builds?
 export LDFLAGS+=" -Wl,--no-keep-memory"
