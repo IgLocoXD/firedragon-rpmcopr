@@ -130,11 +130,11 @@ echo "ac_add_options --enable-release" >> .mozconfig
 echo "ac_add_options --enable-rust-simd" >> .mozconfig
 echo "ac_add_options --prefix=/usr" >> .mozconfig
 
-export AR=llvm-ar
-export CC='clang'
-export CXX='clang++'
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+export AR=\"gcc-ar\"
+export CC=gcc
+export CXX=g++
+export NM=\"gcc-nm\"
+export RANLIB=\"gcc-ranlib\"
 
 # Branding
 echo "ac_add_options --allow-addon-sideload" >> .mozconfig
@@ -284,11 +284,9 @@ rm -f "%{srcdir}"/common/source_files/mozconfig
     ./mach build;
     echo "Profiling instrumented browser...";
     ./mach package;
-    LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" ./mach python build/pgo/profileserver.py;
-    stat -c "Profile data found (%s bytes)" merged.profdata;
-    test -s merged.profdata;
-    stat -c "Jar log found (%s bytes)" jarlog;
-    test -s jarlog;
+
+
+
     echo "Removing instrumented browser...";
     ./mach clobber;
     echo "Building optimized browser...";
