@@ -286,14 +286,14 @@ rm -f "%{srcdir}"/common/source_files/mozconfig
     echo "Building instrumented browser...";
         cat .mozconfig
 
-    ./mach build;
+    ./mach build -v;
     echo "Profiling instrumented browser...";
-    ./mach package;
+    ./mach package -v ;
 
 
 
     echo "Removing instrumented browser...";
-    ./mach clobber;
+    ./mach clobber -v;
     echo "Building optimized browser...";
 
 
@@ -308,7 +308,7 @@ export pkgdir="%{buildroot}"
 
      cd %{srcdir}/firefox-109.0;
 
-     DESTDIR="%pkgdir"  ./mach build  ;
+     DESTDIR="%pkgdir"  ./mach build -v ;
     echo "Building symbol archive...";
      DESTDIR="%pkgdir" ./mach buildsymbols
 
