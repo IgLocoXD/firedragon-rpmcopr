@@ -142,7 +142,8 @@ cp -p "${git_source_dir}"/settings/firedragon.cfg .
 
 # still in script 3, add the relevant patches to the spec
 cp -pf "${git_source_dir}"/linux/megabar.patch
-"${git_source_dir}"/linux/remove_addons.patc"${git_source_dir}"/linux/mozilla-vpn-ad.patch
+"${git_source_dir}"/linux/remove_addons.patch
+"${git_source_dir}"/linux/mozilla-vpn-ad.patch
 "${git_source_dir}"/linux/context-menu.patch
 "${git_source_dir}"/linux/deb_patches/*.patch
 "${git_source_dir}"/cachyos-source/gentoo/0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
