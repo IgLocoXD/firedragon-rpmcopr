@@ -172,7 +172,7 @@ cp -pf "${git_source_dir}"/linux/megabar.patch
 "${git_source_dir}"/source-librewolf/faster-package-multi-locale.patch"
 "${git_source_dir}"/common/patches/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch"
 "${git_source_dir}"/common/patches/custom/librewolf-pref-pane.patch"
-"${git_source_dir}"/common/patches/custom/add_firedragon_svg.patch" ${src_rpm_dir}"
+"${git_source_dir}"/common/patches/custom/add_firedragon_svg.patch" "${src_rpm_dir}"
 
 # "cd browser/branding" was added in the previous sed command
 sed -r firefox.spec3 \
