@@ -151,7 +151,7 @@ cp -pf "${git_source_dir}"/linux/megabar.patch
 "${git_source_dir}"/source-librewolf/unity_kde/mozilla-kde.patch"
 "${git_source_dir}"/source-librewolf/unity_kde/firefox-kde.patch"
 "${git_source_dir}"/source-librewolf/unity_kde/unity-menubar.patch"
-""${git_source_dir}"/source-librewolf/sed-patches/disable-pocket.patch"
+"${git_source_dir}"/source-librewolf/sed-patches/disable-pocket.patch"
 "${git_source_dir}"/source-librewolf/sed-patches/allow-searchengines-non-esr.patch"
 "${git_source_dir}"/source-librewolf/sed-patches/stop-undesired-requests.patch"
 "${git_source_dir}"/source-librewolf/urlbarprovider-interventions.patch"
