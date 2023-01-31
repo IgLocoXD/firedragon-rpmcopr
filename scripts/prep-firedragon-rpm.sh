@@ -142,12 +142,37 @@ cp -p "${git_source_dir}"/settings/firedragon.cfg .
 
 # still in script 3, add the relevant patches to the spec
 cp -pf "${git_source_dir}"/linux/megabar.patch
-"${git_source_dir}"/linux/remove_addons.patch
-"${git_source_dir}"/linux/mozilla-vpn-ad.patch
+"${git_source_dir}"/linux/remove_addons.patc"${git_source_dir}"/linux/mozilla-vpn-ad.patch
 "${git_source_dir}"/linux/context-menu.patch
 "${git_source_dir}"/linux/deb_patches/*.patch
 "${git_source_dir}"/cachyos-source/gentoo/0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-"${git_source_dir}"/source-librewolf/remove_addons.patch"${git_source_dir}"/source-librewolf/unity_kde/mozilla-kde.patch"${git_source_dir}"/source-librewolf/unity_kde/firefox-kde.patch"${git_source_dir}"/source-librewolf/unity_kde/unity-menubar.patch"${git_source_dir}"/source-librewolf/sed-patches/disable-pocket.patch"${git_source_dir}"/source-librewolf/sed-patches/allow-searchengines-non-esr.patch"${git_source_dir}"/source-librewolf/sed-patches/stop-undesired-requests.patch"${git_source_dir}"/source-librewolf/urlbarprovider-interventions.patch"${git_source_dir}"/source-librewolf/allow-ubo-private-mode.patch"${git_source_dir}"/source-librewolf/custom-ubo-assets-bootstrap-location.patch"${git_source_dir}"/source-librewolf/ui-patches/pref-naming.patch"${git_source_dir}"/source-librewolf/ui-patches/remap-links.patch"${git_source_dir}"/source-librewolf/ui-patches/hide-default-browser.patch"${git_source_dir}"/source-librewolf/ui-patches/lw-logo-devtools.patch"${git_source_dir}"/source-librewolf/ui-patches/privacy-preferences.patch"${git_source_dir}"/source-librewolf/ui-patches/remove-branding-urlbar.patch"${git_source_dir}"/source-librewolf/ui-patches/remove-cfrprefs.patch"${git_source_dir}"/source-librewolf/ui-patches/remove-organization-policy-banner.patch"${git_source_dir}"/source-librewolf/ui-patches/remove-snippets-from-home.patch"${git_source_dir}"/source-librewolf/ui-patches/website-appearance-ui-rfp.patch"${git_source_dir}"/source-librewolf/ui-patches/handlers.patch"${git_source_dir}"/source-librewolf/disable-data-reporting-at-compile-time.patch"${git_source_dir}"/source-librewolf/hide-passwordmgr.patch"${git_source_dir}"/source-librewolf/faster-package-multi-locale.patch"${git_source_dir}"/common/patches/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch"${git_source_dir}"/common/patches/custom/librewolf-pref-pane.patch"${git_source_dir}"/common/patches/custom/add_firedragon_svg.patch"${src_rpm_dir}"
+"${git_source_dir}"/source-librewolf/remove_addons.patch"
+"${git_source_dir}"/source-librewolf/unity_kde/mozilla-kde.patch"
+"${git_source_dir}"/source-librewolf/unity_kde/firefox-kde.patch"
+"${git_source_dir}"/source-librewolf/unity_kde/unity-menubar.patch"
+""${git_source_dir}"/source-librewolf/sed-patches/disable-pocket.patch"
+"${git_source_dir}"/source-librewolf/sed-patches/allow-searchengines-non-esr.patch"
+"${git_source_dir}"/source-librewolf/sed-patches/stop-undesired-requests.patch"
+"${git_source_dir}"/source-librewolf/urlbarprovider-interventions.patch"
+"${git_source_dir}"/source-librewolf/allow-ubo-private-mode.patch"
+"${git_source_dir}"/source-librewolf/custom-ubo-assets-bootstrap-location.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/pref-naming.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/remap-links.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/hide-default-browser.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/lw-logo-devtools.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/privacy-preferences.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/remove-branding-urlbar.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/remove-cfrprefs.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/remove-organization-policy-banner.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/remove-snippets-from-home.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/website-appearance-ui-rfp.patch"
+"${git_source_dir}"/source-librewolf/ui-patches/handlers.patch"
+"${git_source_dir}"/source-librewolf/disable-data-reporting-at-compile-time.patch"
+"${git_source_dir}"/source-librewolf/hide-passwordmgr.patch"
+"${git_source_dir}"/source-librewolf/faster-package-multi-locale.patch"
+"${git_source_dir}"/common/patches/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch"
+"${git_source_dir}"/common/patches/custom/librewolf-pref-pane.patch"
+"${git_source_dir}"/common/patches/custom/add_firedragon_svg.patch" ${src_rpm_dir}"
 
 # "cd browser/branding" was added in the previous sed command
 sed -r firefox.spec3 \
