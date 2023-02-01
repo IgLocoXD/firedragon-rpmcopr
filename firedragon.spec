@@ -141,7 +141,7 @@ export NM=gcc-nm
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export OBJCOPY=""
-export LDFLAGS=-static
+export LDFLAGS="$LDFLAGS -static"
 
 # Branding
 echo "ac_add_options --allow-addon-sideload" >> .mozconfig
