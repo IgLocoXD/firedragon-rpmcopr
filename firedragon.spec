@@ -133,11 +133,15 @@ echo "ac_add_options --enable-release" >> .mozconfig
 echo "ac_add_options --enable-rust-simd" >> .mozconfig
 echo "ac_add_options --prefix=/usr" >> .mozconfig
 
-export AR=llvm-ar
-export CC=clang
-export CXX=clang++
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+export CC=gcc
+export CXX=g++
+export LD=ld
+export AS=""
+export NM=gcc-nm
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export OBJCOPY=""
+export LDFLAGS=-static
 
 # Branding
 echo "ac_add_options --allow-addon-sideload" >> .mozconfig
