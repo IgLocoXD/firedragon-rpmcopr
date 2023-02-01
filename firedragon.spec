@@ -112,7 +112,7 @@ Source: https://gitlab.com/obsidian-development/lfs-for-firedragon/-/raw/main/fi
 
 
 echo "ac_add_options --enable-application=browser" >> .mozconfig
-echo "mk_add_options MOZ_OBJDIR=%{PWD@Q}/obj" >> .mozconfig
+echo "mk_add_options MOZ_OBJDIR=../obj" >> .mozconfig
 
 # This supposedly speeds up compilation (We test through dogfooding anyway)
 echo "ac_add_options --disable-debug" >> .mozconfig
