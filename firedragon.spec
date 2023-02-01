@@ -4,6 +4,8 @@ Release: 1
 Summary: 'Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE'
 License: MPL
 
+BuildRequires: jemalloc
+BuildRequires: jemalloc-devel
 BuildRequires:  zip
 BuildRequires: glibc-static
 BuildRequires: gcc
