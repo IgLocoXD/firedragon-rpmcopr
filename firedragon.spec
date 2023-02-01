@@ -135,12 +135,12 @@ echo "ac_add_options --prefix=/usr" >> .mozconfig
 
 export CC=gcc
 export CXX=g++
-export LD=ld
-export AS=""
+export LD=mold
+export AS=as
 export NM=gcc-nm
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
-export OBJCOPY=""
+export OBJCOPY=objcopy
 export LDFLAGS="$LDFLAGS -static"
 
 # Branding
