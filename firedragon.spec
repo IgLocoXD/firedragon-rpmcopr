@@ -150,7 +150,7 @@ echo "export LLVM_PROFDATA=\"llvm-profdata\"" >> .mozconfig
 echo "export AR=\"llvm-ar\"" >> .mozconfig
 echo "export NM=\"llvm-nm\"" >> .mozconfig
 echo "export RANLIB=\"llvm-ranlib\"" >> .mozconfig
-echo "ac_add_options --enable-linker=mold?" >> .mozconfig
+echo "ac_add_options --enable-linker=mold" >> .mozconfig
 %else
 echo "export CC=\"gcc\"" >> .mozconfig
 echo "export CXX=\"g++\"" >> .mozconfig
