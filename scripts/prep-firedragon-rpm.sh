@@ -177,7 +177,7 @@ cp -pf "${git_source_dir}"/common/patches/custom/add_firedragon_svg.patch "${src
 
 # "cd browser/branding" was added in the previous sed command
 sed -r firefox.spec3 \
-   -e '/^%description\s*$/iPatch900: armhf-reduce-linker-memory-use.patch\' \
+    -e '/^%description\s*$/iPatch900: armhf-reduce-linker-memory-use.patch\' \
       -e 'Patch901: fix-armhf-webrtc-build.patch\' \
       -e 'Patch902: webrtc-fix-compiler-flags-for-armhf.patch\' \
       -e 'Patch903: sandbox-update-arm-syscall-numbers.patch\' \
@@ -185,35 +185,34 @@ sed -r firefox.spec3 \
       -e 'Patch905: megabar.patch\' \
       -e 'Patch906: reduce-rust-debuginfo.patch\' \
       -e 'Patch907: mozilla-vpn-ad.patch\' \
-      -e 'Patch908: context-menu.patch' \
-      -e 'Patch909: 0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch' \
-      -e 'Patch910: remove_addons.patch' \
-      -e 'Patch911: mozilla-kde.patch' \
-      -e 'Patch912: firefox-kde.patch' \
-      -e 'Patch913: unity-menubar.patch' \
-      -e 'Patch914: disable-pocket.patch' \
-      -e 'Patch915: allow-searchengines-non-esr.patch' \
-      -e 'Patch916: stop-undesired-requests.patch' \
-      -e 'Patch917: urlbarprovider-interventions.patch' \
-      -e 'Patch918: allow-ubo-private-mode.patch' \
-      -e 'Patch919: custom-ubo-assets-bootstrap-location.patch' \
-      -e 'Patch920: pref-naming.patch' \
-       -e 'Patch921: remap-links.patch' \
-       -e 'Patch922: hide-default-browser.patch' \
-        -e 'Patch923: lw-logo-devtools.patch' \
-         -e 'Patch924:privacy-preferences.patch' \
-          -e 'Patch925:remove-branding-urlbar.patch' \
-          -e 'Patch926:remove-cfrprefs.patch' \
-          -e 'Patch927:remove-organization-policy-banner.patch' \
-          -e 'Patch928:remove-snippets-from-home.patch' \
-          -e 'Patch929:website-appearance-ui-rfp.patch' \
-          -e 'Patch930:handlers.patch' \
-          -e 'Patch931:disable-data-reporting-at-compile-time.patch' \
-          -e 'Patch932:hide-passwordmgr.patch' \
-          -e 'Patch933:faster-package-multi-locale.patch' \
-          -e 'Patch934:0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch' \
-          -e 'Patch935:librewolf-pref-pane.patch' \
-          -e 'Patch936:add_firedragon_svg.patch' \
+      -e 'Patch908: context-menu.patch\' \
+      -e 'Patch910: remove_addons.patch\' \
+      -e 'Patch911: mozilla-kde.patch\' \
+      -e 'Patch912: firefox-kde.patch\' \
+      -e 'Patch913: unity-menubar.patch\' \
+      -e 'Patch914: disable-pocket.patch\' \
+      -e 'Patch915: allow-searchengines-non-esr.patch\' \
+      -e 'Patch916: stop-undesired-requests.patch\' \
+      -e 'Patch917: urlbarprovider-interventions.patch\' \
+      -e 'Patch918: allow-ubo-private-mode.patch\' \
+      -e 'Patch919: custom-ubo-assets-bootstrap-location.patch\' \
+      -e 'Patch920: pref-naming.patch\' \
+       -e 'Patch921: remap-links.patch\' \
+       -e 'Patch922: hide-default-browser.patch\' \
+        -e 'Patch923: lw-logo-devtools.patch\' \
+         -e 'Patch924:privacy-preferences.patch\' \
+          -e 'Patch925:remove-branding-urlbar.patch\' \
+          -e 'Patch926:remove-cfrprefs.patch\' \
+          -e 'Patch927:remove-organization-policy-banner.patch\' \
+          -e 'Patch928:remove-snippets-from-home.patch\' \
+          -e 'Patch929:website-appearance-ui-rfp.patch\' \
+          -e 'Patch930:handlers.patch\' \
+          -e 'Patch931:disable-data-reporting-at-compile-time.patch\' \
+          -e 'Patch932:hide-passwordmgr.patch\' \
+          -e 'Patch933:faster-package-multi-locale.patch\' \
+          -e 'Patch934:0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch\' \
+          -e 'Patch935:librewolf-pref-pane.patch\' \
+          -e 'Patch936:add_firedragon_svg.patch\' \
    -e '/ cd browser\/branding/i%patch900 -p1\' \
       -e '%patch901 -p1\' \
       -e '%patch902 -p1\' \
