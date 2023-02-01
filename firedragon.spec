@@ -5,6 +5,7 @@ Summary: 'Librewolf fork build using custom branding, settings & KDE patches by 
 License: MPL
 
 BuildRequires:  zip
+BuildRequires: glibc-static
 BuildRequires: gcc
 BuildRequires: gcc-arc-linux-gnu
 BuildRequires: gcc-c++
