@@ -1,3 +1,10 @@
+%global toolchain clang
+%if "%{toolchain}" == "clang"
+%global build_with_clang 1
+%else
+%global build_with_clang 0
+%endif
+
 Name: firedragon
 Version: 109.0
 Release: 1
@@ -136,15 +143,24 @@ echo "ac_add_options --enable-release" >> .mozconfig
 echo "ac_add_options --enable-rust-simd" >> .mozconfig
 echo "ac_add_options --prefix=/usr" >> .mozconfig
 
-export CC=gcc
-export CXX=g++
-export LD=mold
-export AS=as
-export NM=gcc-nm
-export AR=gcc-ar
-export RANLIB=gcc-ranlib
-export OBJCOPY=objcopy
-export LDFLAGS="$LDFLAGS -static"
+%if %{build_with_clang}
+echo "export LLVM_PROFDATA=\"llvm-profdata\"" >> .mozconfig
+echo "export AR=\"llvm-ar\"" >> .mozconfig
+echo "export NM=\"llvm-nm\"" >> .mozconfig
+echo "export RANLIB=\"llvm-ranlib\"" >> .mozconfig
+echo "ac_add_options --enable-linker=mold?" >> .mozconfig
+%else
+echo "export CC=\"gcc\"" >> .mozconfig
+echo "export CXX=\"g++\"" >> .mozconfig
+echo "export LD=\"mold\"" >> .mozconfig
+echo "export AS=\"as\"" >> .mozconfig
+echo "export NM=\"gcc-nm\"" >> .mozconfig
+echo "export AR=\"gcc-ar\"" >> .mozconfig
+echo "export RANLIB=\"gcc-ranlib\"" >> .mozconfig
+echo "export OBJCOPY=\"objcopy\"" >> .mozconfig
+echo "export LDFLAGS=\"$LDFLAGS -static\"" >> .mozconfig
+
+%endif
 
 # Branding
 echo "ac_add_options --allow-addon-sideload" >> .mozconfig
