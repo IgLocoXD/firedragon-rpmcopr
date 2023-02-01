@@ -144,6 +144,8 @@ echo "ac_add_options --enable-rust-simd" >> .mozconfig
 echo "ac_add_options --prefix=/usr" >> .mozconfig
 
 %if %{build_with_clang}
+echo "export CC=\"clang\"" >> .mozconfig
+echo "export CXX=\"clang++\"" >> .mozconfig
 echo "export LLVM_PROFDATA=\"llvm-profdata\"" >> .mozconfig
 echo "export AR=\"llvm-ar\"" >> .mozconfig
 echo "export NM=\"llvm-nm\"" >> .mozconfig
