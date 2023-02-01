@@ -268,7 +268,7 @@ rebrand librewolf firedragon
 rebrand "fredragon\.net" "librewolf.net"
 rebrand "#why-is-firedragon-forcing-light-theme" "#why-is-librewolf-forcing-light-theme"
 rebrand kmozillahelper kfiredragonhelper
-cp -pf category-firedragon.svg "%{srcdir}"/firefox-109.0/browser/themes/shared/preferences/
+mv browser/themes/shared/preferences/category-librewolf.svg browser/themes/shared/preferences/category-firedragon.svg
 rm -f "%{srcdir}"/common/source_files/mozconfig
   cp -r "%{srcdir}"/common/source_files/* ./
   export pkgdir="%{buildroot}"
