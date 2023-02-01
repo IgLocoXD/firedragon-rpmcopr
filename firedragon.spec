@@ -16,21 +16,9 @@ BuildRequires:  nspr-devel
 BuildRequires:  nss-devel 
 BuildRequires:  nss-static
 BuildRequires: mold
-BuildRequires: jack-audio-connection-kit-devel
+
 BuildRequires: alsa-lib-devel
 BuildRequires:  bzip2-devel
-BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(krb5)
-BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(freetype2) >= %{freetype_version}
-BuildRequires:  pkgconfig(xt)
-BuildRequires:  pkgconfig(xrender)
-BuildRequires:  pkgconfig(libstartup-notification-1.0)
-BuildRequires:  pkgconfig(libnotify) >= %{libnotify_version}
-BuildRequires:  pkgconfig(dri)
-BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  dbus-glib-devel
 
 BuildRequires:  pkgconfig(libpulse)
