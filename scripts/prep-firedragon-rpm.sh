@@ -146,7 +146,7 @@ cp -p "${git_source_dir}"/settings/firedragon.cfg .
 #cp -pf "${git_source_dir}"/linux/mozilla-vpn-ad.patch "${src_rpm_dir}"
 #cp -pf "${git_source_dir}"/linux/context-menu.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/linux/deb_patches/*.patch "${src_rpm_dir}"
-cp -pf "${git_source_dir}"/cachyos-source/patches/gentoo/0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch "${src_rpm_dir}"
+cp -pf "${git_source_dir}"/cachyos-source/patches/gentoo/0015-bmo-1516081-Disable-watchdog-during-PGO-builds.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/remove_addons.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/unity_kde/mozilla-kde.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/unity_kde/firefox-kde.patch "${src_rpm_dir}"
@@ -158,7 +158,9 @@ cp -pf "${git_source_dir}"/source-librewolf/patches/urlbarprovider-interventions
 cp -pf "${git_source_dir}"/source-librewolf/patches/allow-ubo-private-mode.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/custom-ubo-assets-bootstrap-location.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/ui-patches/pref-naming.patch "${src_rpm_dir}"
-cp -pf "${git_source_dir}"/source-librewolf/patches/ui-patches/remap-links.patch "${src_rpm_dir}"
+# Removed patch because Librewolf main repos doesn't have it anymore. If some has an alternative;
+# Give a fix!
+#cp -pf "${git_source_dir}"/source-librewolf/patches/ui-patches/remap-links.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/ui-patches/hide-default-browser.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/ui-patches/lw-logo-devtools.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/ui-patches/privacy-preferences.patch "${src_rpm_dir}"
@@ -171,21 +173,16 @@ cp -pf "${git_source_dir}"/source-librewolf/patches/ui-patches/handlers.patch "$
 cp -pf "${git_source_dir}"/source-librewolf/patches/disable-data-reporting-at-compile-time.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/hide-passwordmgr.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/source-librewolf/patches/faster-package-multi-locale.patch "${src_rpm_dir}"
-cp -pf "${git_source_dir}"/common/patches/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch "${src_rpm_dir}"
+# Again! Not available anymore...
+#cp -pf "${git_source_dir}"/common/patches/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/common/patches/custom/librewolf-pref-pane.patch "${src_rpm_dir}"
 cp -pf "${git_source_dir}"/common/patches/custom/add_firedragon_svg.patch "${src_rpm_dir}"
 
 # "cd browser/branding" was added in the previous sed command
 sed -r firefox.spec3 \
     -e '/^%description\s*$/iPatch900: armhf-reduce-linker-memory-use.patch\' \
-      -e 'Patch901: fix-armhf-webrtc-build.patch\' \
-      -e 'Patch902: webrtc-fix-compiler-flags-for-armhf.patch\' \
-      -e 'Patch903: sandbox-update-arm-syscall-numbers.patch\' \
       -e 'Patch904: remove_addons.patch\' \
-      -e 'Patch905: megabar.patch\' \
       -e 'Patch906: reduce-rust-debuginfo.patch\' \
-      -e 'Patch907: mozilla-vpn-ad.patch\' \
-      -e 'Patch908: context-menu.patch\' \
       -e 'Patch910: remove_addons.patch\' \
       -e 'Patch911: mozilla-kde.patch\' \
       -e 'Patch912: firefox-kde.patch\' \
@@ -197,7 +194,6 @@ sed -r firefox.spec3 \
       -e 'Patch918: allow-ubo-private-mode.patch\' \
       -e 'Patch919: custom-ubo-assets-bootstrap-location.patch\' \
       -e 'Patch920: pref-naming.patch\' \
-       -e 'Patch921: remap-links.patch\' \
        -e 'Patch922: hide-default-browser.patch\' \
         -e 'Patch923: lw-logo-devtools.patch\' \
          -e 'Patch924:privacy-preferences.patch\' \
@@ -210,7 +206,6 @@ sed -r firefox.spec3 \
           -e 'Patch931:disable-data-reporting-at-compile-time.patch\' \
           -e 'Patch932:hide-passwordmgr.patch\' \
           -e 'Patch933:faster-package-multi-locale.patch\' \
-          -e 'Patch934:0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch\' \
           -e 'Patch935:librewolf-pref-pane.patch\' \
           -e 'Patch936:add_firedragon_svg.patch\' \
    > firefox.spec4
@@ -308,5 +303,5 @@ if test -z "${SKIP_SRC_RPM}" ; then
    mkdir -p ~/rpmbuild/SOURCES
    cd "${src_rpm_dir}" ; cp -pf * ~/rpmbuild/SOURCES ;
    rpmbuild -bs firedragon.spec # creates the firedragon src.rpm in ~/rpmbuild/SRPMS/
-   cp -p ~/rpmbuild/SRPMS/firedragon-${firefox_version}-${distro_firefox_version}*.src.rpm "${work_dir}"
+   cp -p ~/rpmbuild/SRPMS/firedragon-*.src.rpm "${work_dir}"
 fi
